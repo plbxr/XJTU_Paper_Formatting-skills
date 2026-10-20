@@ -1,0 +1,186 @@
+% 西安交通大学本科毕业设计（论文）2026 Word 模板的 LaTeX 正文骨架。
+% 编译：xelatex thesis.tex，至少两遍；真实文献数据库另按所用工具处理。
+% 学校统一 A3 封面、任务书、考核评议书和答辩结果须使用正式文件另行并入。
+% 此文件只提供 A4 论文内页；所有方括号占位文字须在提交前替换或删除。
+
+\documentclass[UTF8,zihao=-4,twoside,openany,fontset=windows]{ctexbook}
+
+\usepackage[
+  a4paper,
+  top=3.0cm,bottom=2.5cm,
+  inner=2.6cm,outer=2.6cm,
+  headheight=0.65cm,headsep=0.35cm,footskip=0.75cm
+]{geometry}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\setCJKmainfont{SimSun}
+\usepackage{setspace}
+\setstretch{1.2}
+\setlength{\parindent}{2\ccwd}
+\setlength{\parskip}{0pt}
+\usepackage{fancyhdr}
+\usepackage{tocloft}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{booktabs,tabularx}
+\usepackage{amsmath,amssymb}
+\usepackage[numbers,super,sort&compress]{natbib}
+
+% 章、节、小节分别为三号、小三号、四号；章节编号为 1 / 1.1 / 1.1.1。
+\ctexset{
+  contentsname={目\quad 录},
+  chapter={
+    name={,},number=\arabic{chapter},aftername=\quad,
+    format=\normalfont\songti\zihao{3}\centering,
+    beforeskip=2\baselineskip,afterskip=1\baselineskip
+  },
+  section={
+    format=\normalfont\songti\zihao{-3}\raggedright,
+    aftername=\quad,indent=0pt,
+    beforeskip=1\baselineskip,afterskip=.5\baselineskip
+  },
+  subsection={
+    format=\normalfont\songti\zihao{4}\raggedright,
+    aftername=\quad,indent=2\ccwd,
+    beforeskip=.5\baselineskip,afterskip=0pt
+  },
+  appendix/name={附录,},appendix/number=\Alph{chapter}
+}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+
+% 目录：三号宋体标题；小四号宋体条目；逐级缩进一字符，右侧页码用点线连接。
+\renewcommand{\cfttoctitlefont}{\hfill\normalfont\songti\zihao{3}}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\setlength{\cftbeforetoctitleskip}{2\baselineskip}
+\setlength{\cftaftertoctitleskip}{1\baselineskip}
+\setlength{\cftchapindent}{0pt}
+\setlength{\cftsecindent}{1\ccwd}
+\setlength{\cftsubsecindent}{2\ccwd}
+\setlength{\cftchapnumwidth}{2.5em}
+\setlength{\cftsecnumwidth}{3.5em}
+\setlength{\cftsubsecnumwidth}{4.5em}
+\renewcommand{\cftchapfont}{\normalfont\songti\zihao{-4}}
+\renewcommand{\cftsecfont}{\normalfont\songti\zihao{-4}}
+\renewcommand{\cftsubsecfont}{\normalfont\songti\zihao{-4}}
+\renewcommand{\cftchappagefont}{\normalfont\zihao{-4}}
+\renewcommand{\cftsecpagefont}{\normalfont\zihao{-4}}
+\renewcommand{\cftsubsecpagefont}{\normalfont\zihao{-4}}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+% 奇数页显示对应章名，偶数页显示校名；页码在页脚外侧。
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\quad#1}{}}
+\newcommand{\xjtuheadfoot}{%
+  \fancyhf{}%
+  \fancyhead[CO]{\zihao{5}\nouppercase{\leftmark}}%
+  \fancyhead[CE]{\zihao{5}西安交通大学本科毕业设计（论文）}%
+  \fancyfoot[LE,RO]{\zihao{5}\thepage}%
+  \renewcommand{\headrulewidth}{0.5pt}%
+  \renewcommand{\headrule}{%
+    \vbox{\hrule width\headwidth height0.5pt\vskip1.5pt
+          \hrule width\headwidth height0.5pt}}%
+}
+\pagestyle{fancy}
+\xjtuheadfoot
+\fancypagestyle{plain}{\xjtuheadfoot}
+
+% 图表题注五号居中；图题在下，表题在上。
+\DeclareCaptionFont{xjtuwu}{\zihao{5}}
+\DeclareCaptionLabelFormat{xjtu}{#1#2}
+\DeclareCaptionLabelFormat{xjtuappendix}{#2}
+\captionsetup{font=xjtuwu,justification=centering,labelformat=xjtu,labelsep=space}
+\renewcommand{\thefigure}{\thechapter-\arabic{figure}}
+\renewcommand{\thetable}{\thechapter-\arabic{table}}
+\renewcommand{\theequation}{\thechapter-\arabic{equation}}
+\setlength{\heavyrulewidth}{1.5pt}
+\setlength{\lightrulewidth}{1pt}
+\makeatletter
+\renewcommand{\tagform@}[1]{\maketag@@@{（#1）}}
+\makeatother
+
+\begin{document}
+
+% 正文前页码为大写罗马数字。中文、英文摘要各占新页。
+\pagenumbering{Roman}
+\chapter*{摘\quad 要}
+\markboth{摘\quad 要}{}
+\addcontentsline{toc}{chapter}{摘\quad 要}
+[填写中文摘要：目的、方法、本人工作、主要结果和结论。]
+
+\par\noindent\textbf{关\quad 键\quad 词：}[词一]；[词二]；[词三]
+
+\clearpage
+\chapter*{ABSTRACT}
+\markboth{ABSTRACT}{}
+\addcontentsline{toc}{chapter}{ABSTRACT}
+[Write the English abstract corresponding to the Chinese abstract.]
+
+\par\noindent\textbf{KEY WORDS:} [term one]; [term two]; [term three]
+
+% 符号较多时，在目录前启用以下部分；符号少时删除此注释块。
+% \clearpage
+% \chapter*{主要符号表}
+% \markboth{主要符号表}{}
+% \addcontentsline{toc}{chapter}{主要符号表}
+% \noindent [按拉丁大写、小写、希腊大写、小写排列，并注明单位及缩略词全称。]
+
+% 中文目录须从奇数页起排。原 Word 文件的页序与装订条款不同；此处按装订条款。
+\cleardoublepage
+\tableofcontents
+
+% 正文第一章从奇数页起排，从阿拉伯数字 1 开始。
+\cleardoublepage
+\pagenumbering{arabic}
+\chapter{绪论}
+\section{研究背景}
+[填写真实研究背景。]
+\subsection{研究问题}
+[填写研究问题、已有工作及本文任务。]
+
+% 根据真实论文需要添加章节；不要保留模板示例章节数。
+% 图表示例：先在正文中引用“图\ref{fig:example}”，再插入图。
+% \begin{figure}[htbp]
+%   \centering
+%   \includegraphics[width=6.67cm]{figures/example.pdf}
+%   \caption{真实图题}\label{fig:example}
+% \end{figure}
+%
+% 三线表示例：表题必须在表格上方，表宽与正文版心一致。
+% \begin{table}[htbp]
+%   \centering
+%   \caption{真实表题}\label{tab:example}
+%   \zihao{5}
+%   \begin{tabularx}{\textwidth}{lXX}
+%     \toprule
+%     项目 & 数据一 & 数据二 \\
+%     \midrule
+%     [实际项目] & [实际值] & [实际值] \\
+%     \bottomrule
+%   \end{tabularx}
+% \end{table}
+
+\chapter{结论与展望}
+[归纳本人研究结果、适用范围、不足与后续建议。]
+
+\chapter*{致\quad 谢}
+\markboth{致\quad 谢}{}
+\addcontentsline{toc}{chapter}{致\quad 谢}
+[填写真实致谢；不超过 1000 汉字。]
+
+\chapter*{参考文献}
+\markboth{参考文献}{}
+\addcontentsline{toc}{chapter}{参考文献}
+% 填入真实文献。使用 BibTeX/Biber 时，替换此标题及以下区域，
+% 确保自动生成的参考文献标题不会与本标题重复，并加入目录。
+
+% 如需附录，取消以下示例的注释并填入真实内容；页码继续正文编号。
+% \appendix
+% \renewcommand{\thefigure}{附录\Alph{chapter}-图\arabic{figure}}
+% \renewcommand{\thetable}{附录\Alph{chapter}-表\arabic{table}}
+% \renewcommand{\theequation}{附录\Alph{chapter}-\arabic{equation}}
+% \captionsetup[figure]{labelformat=xjtuappendix}
+% \captionsetup[table]{labelformat=xjtuappendix}
+% \chapter{外文原文}
+% [填写真实附录内容。]
+
+\end{document}
